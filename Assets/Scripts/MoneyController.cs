@@ -67,7 +67,7 @@ public class MoneyController : MonoBehaviour
 
     private void UpdateMoneyPerSecondText()
     {
-        addMoneyPerSecondText.text = "" + addMoneyPerSecond.ToString("F1") + "/sec";
+        addMoneyPerSecondText.text = "" + addMoneyPerSecond.ToString("F1") + "";
     }
 
     private void SaveMoneyPerSecond()

@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class InteractableObject : MonoBehaviour
 {
     public string objectName; // Unique object name
+    public string foodName; // Name of the food item, if applicable
     public int iD;
     public int price;
     public TextMeshPro priceText;
@@ -18,6 +19,7 @@ public class InteractableObject : MonoBehaviour
     public AudioManager audioManager;
     public GameObject listShop;
     public ExpeditionManager expeditionManager;
+    public AnimalFeedingManager feedingManager;
     public float preSecond;
 
     void Start()
@@ -57,6 +59,7 @@ public class InteractableObject : MonoBehaviour
                 if (moneyController.SubtractMoney(price))
                 {
                     PurchaseObject();
+                    feedingManager.PurchaseAnimal(foodName);
                     moneyController.AddMoneyPerSecond(preSecond);
 
                         expeditionManager.OnHousePurchased(gameObject.name);
@@ -71,6 +74,7 @@ public class InteractableObject : MonoBehaviour
             case "Upgrade5":
                 if (moneyController.SubtractMoney(price))
                 {
+                    feedingManager.PurchaseAnimal(foodName);
                     PurchaseObject();
                     moneyController.AddMoneyPerSecond(preSecond);
 
